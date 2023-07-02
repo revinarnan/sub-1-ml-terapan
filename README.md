@@ -37,28 +37,34 @@ Tahapan pemahaman *dataset* yang dilakukan diantaranya:
 
 1.  Melihat macam dan jumlah kolom dengan df.info,
 
-    <img width="185" alt="df_info" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/eaabc97d-6dc9-4c81-ad1a-11b397a503b2">
-    
-    *Gambar 1. Dataframe Info*
-    
-    Pada Gambar 1, dapat dilihat bahwa *dataset* memiliki 5 kolom dan 44898 baris.
+    *Tabel 1. Dataframe Info*
 
-2. Memvisualisasikan jumlah dari masing-masing subjek pada berita,
+    | index | Column     | Non-Null Count  | Dtype   |
+    | ----- | ---------- | --------------- | ------- |
+    | 0     | title      | 44898 non-null  | object  |
+    | 1     | text       | 44898 non-null  | object  |
+    | 2     | subject    | 44898 non-null  | object  |
+    | 3     | date       | 44898 non-null  | object  |
+    | 4     | category   | 44898 non-null  | int64   |
+    
+    Pada Tabel 1, dapat dilihat bahwa *dataset* memiliki 5 kolom dan 44898 baris.
+
+3. Memvisualisasikan jumlah dari masing-masing subjek pada berita,
    <img width="629" alt="subject_type_vis" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/cf0f4703-a6fc-4e27-92e8-5c2ba4be3d08">
    
    *Gambar 2. Grafik Persebaran Subjek Berita*
 
    Dari hasil *diagram plot*, dapat dilihat banyaknya data dari masing-masing *subject* berita. Subjek berita paling banyak adalah politik, dan paling sedikit adalah subjek *middle-east.* Sebagai catatan, dapat dilihat juga terdapat subjek dengan maksud yang sama, yaitu politik, yang memiliki dua batang *chart* berbeda. Hal ini dikarenakan, sebagian batang termasuk ke dalam berita *fake* dan satu lainnya termasuk ke dalam kategori *real*. 
 
-3. Melihat kata yang sering muncul dengan *wordcloud*,
+4. Melihat kata yang sering muncul dengan *wordcloud*,
 
-   <img width="191" alt="word_cloud_vis" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/118fa305-56df-4cba-9e2f-f8b4244d8b3c">
+   <img width="300" alt="word_cloud_vis" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/118fa305-56df-4cba-9e2f-f8b4244d8b3c">
 
    *Gambar 3. Word Cloud*
 
    Kata yang sering muncul dalam *dictionary* adalah Donald Trump, US, White House, dan sebagainya.
 
-4. Melihat perbandingan data *Fake* dan data *Real* *News*,
+5. Melihat perbandingan data *Fake* dan data *Real* *News*,
 
    <img width="436" alt="target_dis" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/f0f282db-a6c6-4329-b228-a3ad70465018">
 
@@ -66,11 +72,7 @@ Tahapan pemahaman *dataset* yang dilakukan diantaranya:
 
    Pada Gambar 4, jumlah data *fake* dan data *real* cukup seimbang, tidak terlalu jauh selisih banyaknya data.
 
-5. Melakukan pengecekan terhadap *null values*.
-
-   <img width="100" alt="df_na" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/b852d0cf-1814-49b5-8133-389732e7fbef">
-
-   *Gambar 5. Hasil Cek Null Values*
+6. Melakukan pengecekan terhadap *null values*.
 
    Dataset tidak memiliki data yang *null*, sehingga bisa langsung dilanjutkan ke proses berikutnya.
 
@@ -118,11 +120,7 @@ Sederhananya, metriks ini menghitung jumlah persentase prediksi benar dari selur
 
 <img width="291" alt="model_loss" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/e3da8aaa-8d3e-4a79-bcd2-dc553e00ed68">
 
-*Gambar 7. Grafik Loss Model*
-
-<img width="401" alt="model_ev" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/62a2622f-f4cc-4fa7-87f3-b946bcead712">
-
-*Gambar 8. Hasil Evaluasi Model*
+*Gambar 7. Hasil Evaluasi Model*
 
 Model mendapatkan nilai akurasi sebesar 98,5% dengan loss model sebesar 7%.
 
@@ -130,18 +128,18 @@ Ditampilkan juga hasil *confusion matrix* dari hasil prediksi sebagai berikut:
 
 <img width="236" alt="conf_matrix" src="https://github.com/revinarnan/sub-1-ml-terapan/assets/45119832/5f0ea859-47b3-4c15-922a-f7e5437f78f4">
 
-*Gambar 9. Hasil Confusion Matrix Model*
+*Gambar 8. Hasil Confusion Matrix Model*
 
 Pemetaan tabel dari hasil *confusion matrix* pada gambar di atas.
 
-*Tabel 1. Pemetaan Confusion Matrix*
+*Tabel 2. Pemetaan Confusion Matrix*
 
 |                | *Fake*                    | *Original*                |
 | -------------- | ------------------------- | ------------------------- |
 | ***Fake***     | ***True Negative (TN)***  | ***False Positive (FP)*** |
 | ***Original*** | ***False Negative (FN)*** | ***True Positive (TP)***  |
 
-Dari *confusion matrix* di atas, dapat  dilakukan analisis bahwa model dapat memprediksi 7124 *predicted label* 'Fake' dari 7177 *actual label* 'Fake'. Model juga dapat memprediksi sebanyak 6141 *predicted label* 'Original' dari 6293 *actual label* 'Original'. Selain itu, sebanyak 53 label diprediksi sebagai 'Original' yang seharusnya berlabel 'Fake', dan sebanyak 152 label diprediksi model sebagai 'Fake' yang seharusnya berlabel 'Original'.
+Dari Gambar 8 *confusion matrix*, dapat  dilakukan analisis bahwa model dapat memprediksi 7124 *predicted label* 'Fake' dari 7177 *actual label* 'Fake'. Model juga dapat memprediksi sebanyak 6141 *predicted label* 'Original' dari 6293 *actual label* 'Original'. Selain itu, sebanyak 53 label diprediksi sebagai 'Original' yang seharusnya berlabel 'Fake', dan sebanyak 152 label diprediksi model sebagai 'Fake' yang seharusnya berlabel 'Original'.
 
 ## Kesimpulan
 
